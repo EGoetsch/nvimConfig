@@ -1,4 +1,4 @@
-return {
+ return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
@@ -11,4 +11,4 @@ return {
     vim.keymap.set('n','<A-e>', ':Neotree filesystem toggle left <CR>')
     vim.keymap.set('n','<A-E>', ':Neotree filesystem close<CR>')
   end
-}
+ }
