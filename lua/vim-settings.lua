@@ -7,6 +7,8 @@ vim.cmd("set nowrap")
 vim.g.mapleader = " " --Map leader needs to occur before lazy is installed
 vim.keymap.set({ 'n', 'v' }, 'q', '<Nop>', { silent = true })
 vim.keymap.set({'i', 'c'}, 'jkk', '<esc>', { silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', {})
+vim.keymap.set('n', '<C-d>', '<C-d>zz', {})
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -78,4 +80,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
 

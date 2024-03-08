@@ -18,5 +18,3 @@ local opts = {}
 require("vim-settings")
 require("lazy").setup("plugins")
 
-
-
