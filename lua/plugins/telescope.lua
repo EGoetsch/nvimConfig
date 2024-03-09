@@ -26,7 +26,8 @@ return {
         end
 
         -- Find the Git root directory from the current file's path
-        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
+        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
+        [1]
         if vim.v.shell_error ~= 0 then
           print 'Not a git repository. Searching on current working directory'
           return cwd
@@ -81,9 +82,14 @@ return {
       require("telescope").setup {
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown { }
+            require("telescope.themes").get_dropdown {}
           }
-        }
+        },
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+          }
+        },
       }
       require("telescope").load_extension("ui-select")
     end,

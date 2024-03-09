@@ -4,7 +4,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.keymap.set({ 'n', 'v' }, 'q', '<Nop>', { silent = true })
-vim.keymap.set({'i', 'c'}, 'jkk', '<esc>', { silent = true })
+vim.keymap.set({ 'i', 'c' }, 'jkk', '<esc>', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', {})
 vim.keymap.set('n', '<C-d>', '<C-d>zz', {})
 -- Set to true if you have a Nerd Font installed
@@ -19,7 +19,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, for help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
