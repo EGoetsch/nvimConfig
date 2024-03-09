@@ -3,10 +3,12 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
     dependencies = {
+      'debugloop/telescope-undo.nvim',
       'nvim-lua/plenary.nvim',
     },
     config = function()
-      require('telescope').load_extension('fzf')
+      require('telescope').load_extension 'fzf'
+      require('telescope').load_extension 'undo'
       -- local builtin = require('telescope.builtin')
       -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
       -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
@@ -26,8 +28,7 @@ return {
         end
 
         -- Find the Git root directory from the current file's path
-        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-        [1]
+        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
         if vim.v.shell_error ~= 0 then
           print 'Not a git repository. Searching on current working directory'
           return cwd
@@ -74,24 +75,25 @@ return {
       vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-    end
+    end,
+    vim.keymap.set('n', '<leader>u', '<cmd>Telescope undo<cr>'),
   },
   {
     'nvim-telescope/telescope-ui-select.nvim',
     config = function()
-      require("telescope").setup {
+      require('telescope').setup {
         extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown {}
-          }
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown {},
+          },
         },
         pickers = {
           colorscheme = {
             enable_preview = true,
-          }
+          },
         },
       }
-      require("telescope").load_extension("ui-select")
+      require('telescope').load_extension 'ui-select'
     end,
   },
 }
